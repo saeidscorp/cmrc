@@ -952,7 +952,7 @@ function(cmrc_add_resource_library name)
 
     set_property(TARGET ${name} PROPERTY CMRC_LIBDIR "${libdir}")
     set_property(TARGET ${name} PROPERTY CMRC_NAMESPACE "${ARG_NAMESPACE}")
-    target_link_libraries(${name} PUBLIC cmrc::base)
+    target_link_libraries(${name} PUBLIC "$<BUILD_INTERFACE:cmrc-base>")
     set_property(TARGET ${name} PROPERTY CMRC_IS_RESOURCE_LIBRARY TRUE)
     if(ARG_ALIAS)
         add_library("${ARG_ALIAS}" ALIAS ${name})
